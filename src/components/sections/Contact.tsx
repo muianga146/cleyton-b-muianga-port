@@ -1,7 +1,38 @@
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    package: 'Básico (7.000 MZN)',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const subject = `Novo Contacto via Site - ${formData.name}`;
+    const body = `Nome: ${formData.name}
+Telefone: ${formData.phone}
+Email: ${formData.email}
+Pacote: ${formData.package}
+
+Mensagem:
+${formData.message}`;
+
+    window.location.href = `mailto:cleytonbmuianga@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <section id="contact" className="py-24 bg-white dark:bg-black">
       <div className="container mx-auto px-6">
@@ -83,26 +114,55 @@ export default function Contact() {
             viewport={{ once: true }}
             className="bg-gray-50 dark:bg-white/5 p-8 md:p-10 rounded-3xl border border-black/5 dark:border-white/5"
           >
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wide">Nome</label>
-                  <input type="text" className="w-full bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl p-4 focus:outline-none focus:border-brand-orange transition-colors" placeholder="Seu nome" />
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl p-4 focus:outline-none focus:border-brand-orange transition-colors" 
+                    placeholder="Seu nome" 
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-bold uppercase tracking-wide">Telefone</label>
-                  <input type="tel" className="w-full bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl p-4 focus:outline-none focus:border-brand-orange transition-colors" placeholder="+258..." />
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="w-full bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl p-4 focus:outline-none focus:border-brand-orange transition-colors" 
+                    placeholder="+258..." 
+                  />
                 </div>
               </div>
               
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wide">Email</label>
-                <input type="email" className="w-full bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl p-4 focus:outline-none focus:border-brand-orange transition-colors" placeholder="seu@email.com" />
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl p-4 focus:outline-none focus:border-brand-orange transition-colors" 
+                  placeholder="seu@email.com" 
+                />
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wide">Pacote de Interesse</label>
-                <select className="w-full bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl p-4 focus:outline-none focus:border-brand-orange transition-colors">
+                <select 
+                  name="package"
+                  value={formData.package}
+                  onChange={handleChange}
+                  className="w-full bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl p-4 focus:outline-none focus:border-brand-orange transition-colors"
+                >
                   <option>Básico (7.000 MZN)</option>
                   <option>Intermédio (10.500 MZN)</option>
                   <option>Premium (15.000 MZN)</option>
@@ -112,7 +172,15 @@ export default function Contact() {
 
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wide">Mensagem</label>
-                <textarea rows={4} className="w-full bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl p-4 focus:outline-none focus:border-brand-orange transition-colors" placeholder="Conte-me sobre o seu projeto..." />
+                <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={4} 
+                  className="w-full bg-white dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-xl p-4 focus:outline-none focus:border-brand-orange transition-colors" 
+                  placeholder="Conte-me sobre o seu projeto..." 
+                />
               </div>
 
               <button type="submit" className="w-full bg-brand-orange text-white font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-brand-orange/90 transition-colors flex items-center justify-center gap-2">

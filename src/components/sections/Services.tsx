@@ -58,21 +58,6 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Tech Stack Marquee */}
-        <div className="mt-20 overflow-hidden py-10 border-t border-b border-black/5 dark:border-white/5">
-          <div className="flex gap-12 animate-marquee whitespace-nowrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            {['HTML5', 'CSS3', 'JavaScript', 'React', 'Tailwind', 'Framer Motion', 'Figma', 'SEO', 'Responsive'].map((tech, i) => (
-              <span key={i} className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">
-                {tech}
-              </span>
-            ))}
-             {['HTML5', 'CSS3', 'JavaScript', 'React', 'Tailwind', 'Framer Motion', 'Figma', 'SEO', 'Responsive'].map((tech, i) => (
-              <span key={`dup-${i}`} className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

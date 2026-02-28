@@ -1,4 +1,4 @@
-import { Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -16,14 +16,8 @@ export default function Footer() {
         </div>
 
         <div className="flex gap-6">
-          <a href="https://x.com/CleytonBMuianga" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-gray-100 dark:bg-white/5 hover:bg-brand-orange hover:text-white transition-colors">
-            <Twitter size={20} />
-          </a>
-          <a href="#" className="p-2 rounded-full bg-gray-100 dark:bg-white/5 hover:bg-brand-orange hover:text-white transition-colors">
+          <a href="https://www.instagram.com/sinteticoestudio?igsh=MXRpOHFhZGVzcmc2MQ==" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-gray-100 dark:bg-white/5 hover:bg-brand-orange hover:text-white transition-colors">
             <Instagram size={20} />
-          </a>
-          <a href="#" className="p-2 rounded-full bg-gray-100 dark:bg-white/5 hover:bg-brand-orange hover:text-white transition-colors">
-            <Linkedin size={20} />
           </a>
         </div>
 

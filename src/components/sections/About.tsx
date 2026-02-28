@@ -40,7 +40,7 @@ export default function About() {
           >
             <div className="aspect-[4/5] rounded-2xl overflow-hidden relative z-10">
               <img 
-                src="https://picsum.photos/seed/portrait/800/1000" 
+                src="https://lh3.googleusercontent.com/d/1NZJuw-NHW_7fDxCe3VEK9XGyLi4PvnJR=w1000" 
                 alt="Cleyton Muianga" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
