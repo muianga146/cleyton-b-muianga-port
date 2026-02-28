@@ -14,16 +14,18 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const subject = `Novo Contacto via Site - ${formData.name}`;
-    const body = `Nome: ${formData.name}
-Telefone: ${formData.phone}
-Email: ${formData.email}
-Pacote: ${formData.package}
+    const text = `*Novo Contacto via Site*
+    
+*Nome:* ${formData.name}
+*Telefone:* ${formData.phone}
+*Email:* ${formData.email}
+*Pacote:* ${formData.package}
 
-Mensagem:
+*Mensagem:*
 ${formData.message}`;
 
-    window.location.href = `mailto:cleytonbmuianga@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const encodedText = encodeURIComponent(text);
+    window.open(`https://wa.me/258849539582?text=${encodedText}`, '_blank');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
